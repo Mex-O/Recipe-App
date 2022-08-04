@@ -14,6 +14,9 @@
     </div>
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
+        <div class="col-md-12 text-center">
+          <h3 v-if="this.query.length>0">Showing Results for {{this.query}}...</h3>
+        </div>
         <div
           class="col-sm-6 col-md-3"
           v-for="recipes in recipe"
