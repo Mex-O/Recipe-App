@@ -1,4 +1,5 @@
 # foodrecipe
+A food Recipe App built with vue js and Edamam api
 
 ## Project setup
 ```
