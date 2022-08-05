@@ -15,10 +15,10 @@
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <div class="col-md-12 text-center">
-          <h3 v-if="this.query.length>0">Showing Results for {{this.query}}...</h3>
+          <h3 v-if="this.query.length>1">Showing Results for {{this.query}}...</h3>
         </div>
         <div
-          class="col-sm-6 col-md-3"
+          class="col-sm-6 col-md-3" id="col"
           v-for="recipes in recipe"
           :key="recipes.recipe.id"
         >
@@ -55,20 +55,22 @@ export default {
   data() {
     return {
       query: "",
-      recipe: [],
+      recipe:'',
       error: `Please enter a valid Recipe`,
+      result:''
     };
   },
   methods: {
     searchRecipe(e) {
-      if (this.query.length <= 0 || this.query === this.recipe) {
+      if (this.query.length <= 0) {
         alert(this.error);
+        return(this.query='')
       } else {
         fetch(
           `https://api.edamam.com/search?q=${this.query}&app_id=54746f42&app_key=ee2be6bd51262229750b0f60e65f89a0&to=20`
         )
           .then((response) => response.json())
-          .then((data) => (this.recipe = data.hits));
+          .then((data) => (this.recipe = data.hits)); 
         return (this.query = "");
       }
     },
@@ -85,24 +87,24 @@ input[type="text"] {
   width: 70%;
   padding: 10px;
 }
+#col{
+  margin:5px;
+}
 input[type="button"] {
   padding: 10px;
   font-weight: bold;
 }
 .card{
-  margin: 20px !important;
-  margin-bottom:40px;
   padding:2px;
-  margin-bottom:30px;
-  min-height: 80%;
-  max-height:80%;
+  margin:20px !important;
+  min-height: 95%;
+  max-height:95%;
   text-align: left;
 }
 .img-fluid{
-    min-height:100%;
-    max-height:100%;
+    max-height:80%;
 }
 .btn {
-  margin-top: 30px;
+  margin-top:40px;
 }
 </style>

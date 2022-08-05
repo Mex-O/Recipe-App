@@ -23,7 +23,6 @@ export default {
     background-position:cover;
     background-size:cover;
     background-repeat:no-repeat;
-    object-fit:contain;
     padding:100px;
     font-family: 'Satisfy', cursive;
 }
